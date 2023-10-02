@@ -13,5 +13,5 @@ function getMaximalDisjoints(A) {
   return max_disjoints;
 }
 
-//Time complexity: O(n)
+//Time complexity: O(n log n)
 //Space complexity: O(1)
