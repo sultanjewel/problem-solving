@@ -1,4 +1,4 @@
-function solveMaze(maze)
+function findPath(maze_array)
 {
 	let sol = new Array(N);
 	for(let i=0;i<N;i++)
@@ -10,48 +10,30 @@ function solveMaze(maze)
 		}
 	}
 
-		if (solveMazeUtil(maze, 0, 0, sol) == false) {
-			return false;
-		}
-
-		printSolution(sol);
-		return true;
+	return findPathRecursive(maze_array, 0, 0, sol);
 }
-function isSafe(maze,x,y)
+function findPathRecursive(maze_array,x,y,sol)
 {
-		return (x >= 0 && x < N && y >= 0	&& y < N && maze[x][y] == 1);
-}
-
-function solveMazeUtil(maze,x,y,sol)
-{
-	// if (x, y is goal) return true
-		if (x == N - 1 && y == N - 1
-			&& maze[x][y] == 1) {
+		if (x == N - 1 && y == N - 1 && maze_array[x][y] == 1) {
 			sol[x][y] = 1;
 			return true;
 		}
-		if (isSafe(maze, x, y) == true) {
+		if (x >= 0 && x < N && y >= 0	&& y < N && maze_array[x][y] == 1) {
 			if (sol[x][y] == 1)
 				return false;
 			
-			// mark x, y as part of solution path
 			sol[x][y] = 1;
 
-			/* Move forward in x direction */
-			if (solveMazeUtil(maze, x + 1, y, sol))
+			if (findPathRecursive(maze_array, x + 1, y, sol))
 				return true;
 
-			/* If moving in x direction doesn't give
-			solution then Move down in y direction */
-			if (solveMazeUtil(maze, x, y + 1, sol))
+			if (findPathRecursive(maze_array, x, y + 1, sol))
 				return true;
 			
-			/* If moving in y direction doesn't give
-			solution then Move backwards in x direction */
-			if (solveMazeUtil(maze, x - 1, y, sol))
+			if (findPathRecursive(maze_array, x - 1, y, sol))
 				return true;
 
-			if (solveMazeUtil(maze, x, y - 1, sol))
+			if (findPathRecursive(maze_array, x, y - 1, sol))
 				return true;
 
 			sol[x][y] = 0;
