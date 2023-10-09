@@ -42,4 +42,5 @@ function findPathRecursive(maze_array,x,y,sol)
 
 		return false;
 }
-
+//Time Complexity: O(n^2)
+//Space Complexity: O(n)
