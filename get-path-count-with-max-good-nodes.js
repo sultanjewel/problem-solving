@@ -19,11 +19,6 @@ function getPathsCount(A,B,C){
     //return adjMap;
     let count=0;
     if(adjMap['1'].length==0)return 0;
-    //return recursive(A,current_node,adjMap,C);
-    let current_good_nodes=0;
-    if(A[0]==1)current_good_nodes++;
-    for(node of adjMap['1']){
-      count=count+recursive(A,node,adjMap,C,current_good_nodes,count);
-    }
+    count=count+recursive(A,node,adjMap,C,0,count);
     return count;
 }
