@@ -12,11 +12,8 @@ function getPathsCount(A,B,C){
     let adjMap={};
     for(let [node_a,node_b] of B){
         if(typeof adjMap[node_a]=='undefined')adjMap[node_a]=[];
-       // if(typeof adjMap[node_b]=='undefined')adjMap[node_b]=[];
         adjMap[node_a].push(node_b);
-       // adjMap[node_b].push(node_a);
     }
-    //return adjMap;
     let count=0;
     if(adjMap['1'].length==0)return 0;
     count=count+recursive(A,node,adjMap,C,0,count);
