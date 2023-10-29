@@ -14,7 +14,8 @@ function getPathsCount(A,B,C){
         if(typeof adjMap[node_a]=='undefined')adjMap[node_a]=[];
         adjMap[node_a].push(node_b);
     }
-    let count=0;
-    count=count+recursive(A,node,adjMap,C,0,count);
-    return count;
+    return recursive(A,'1',adjMap,C,0,0);
 }
+
+//Time complexity: O(n)
+//Space Complexity: O(n)
